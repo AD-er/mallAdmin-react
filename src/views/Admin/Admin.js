@@ -68,7 +68,11 @@ class Admin extends Component {
               { admin.phone ? <span onClick={this.showUpdatePasswdModal}>修改</span> : <span>去设置</span> }
             </div>
             <div className="set-list-mid">
-              { admin.phone ? '您已绑定了手机' + admin.phone : '请绑定一个手机号码' } [您的手机为安全手机，可用于账户登录或找回密码]
+              {
+                admin.phone
+                ? '您已绑定了手机' + admin.phone.replace(/(\d{3})\d{4}(\d{4})/, "$1****$2")
+                : '请绑定一个手机号码'
+              } [您的手机为安全手机，可用于账户登录或找回密码]
             </div>
           </li>
           <li>
@@ -79,7 +83,11 @@ class Admin extends Component {
               { admin.email !== '未设置' ? <span>修改</span> : <span>去设置</span> }
             </div>
             <div className="set-list-mid">
-              { admin.email !== '未设置' ? '您已绑定了邮箱' + admin.email : '请绑定一个电子邮箱' } [您的邮箱为安全邮箱，可用于账户登录或找回密码]
+              {
+                admin.email !== '未设置'
+                ? '您已绑定了邮箱' + admin.email
+                : '请绑定一个电子邮箱'
+              } [您的邮箱为安全邮箱，可用于账户登录或找回密码]
             </div>
           </li>
           <li>

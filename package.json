@@ -27,7 +27,7 @@
   },
   "proxy": {
     "/apia": {
-      "target": "后端API接口",
+      "target": "https://www.dajing.ren",
       "changeOrigin": true
     }
   }
