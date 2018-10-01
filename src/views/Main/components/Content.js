@@ -42,8 +42,8 @@ class ContentMain extends React.Component {
 
           <PrivateRoute exact path='/product/profit' component={Product}/>
 
-          <PrivateRoute exact path='/user' component={User}/>
-          <PrivateRoute exact path='/visitor' component={Visitor}/>
+          <PrivateRoute exact path='/user/user' component={User}/>
+          <PrivateRoute exact path='/user/visitor' component={Visitor}/>
 
           <PrivateRoute exact path='/admin/user' component={Admins}/>
           <PrivateRoute exact path='/admin/user/:id' component={Admin}/>

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Menu, Icon } from 'antd';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 //此组件的意义就是将数据抽离出来，通过传递数据去渲染
 class MenuMain extends React.Component {
@@ -11,36 +11,37 @@ class MenuMain extends React.Component {
 
   componentDidMount() {
     // 防止页面刷新侧边栏又初始化了
-    // const pathname = this.props.location.pathname
+    const { pathname, search } = this.props.location
     //获取当前所在的目录层级
-    // const rank = pathname.split('/')
-    // switch (rank.length) {
-    //   case 2 :  //一级目录
-    //     this.setState({
-    //       selectedKeys: [pathname]
-    //     })
-    //     break;
-    //   case 5 : //三级目录，要展开两个subMenu
-    //     this.setState({
-    //       selectedKeys: [pathname],
-    //       openKeys: [rank.slice(0, 3).join('/'), rank.slice(0, 4).join('/')]
-    //     })
-    //     break;
-    //   default :
-    //     this.setState({
-    //       selectedKeys: [pathname],
-    //       openKeys: [pathname.substr(0, pathname.lastIndexOf('/'))]
-    //     })
-    // }
+    const rank = pathname.split('/')
+    switch (rank.length) {
+      case 2 :  //一级目录
+        this.setState({
+          selectedKeys: [pathname + search],
+          openKeys: [pathname]
+        })
+        break;
+      case 5 : //三级目录，要展开两个subMenu
+        this.setState({
+          selectedKeys: [pathname + search],
+          openKeys: [rank.slice(0, 3).join('/'), rank.slice(0, 4).join('/')]
+        })
+        break;
+      default :
+        this.setState({
+          selectedKeys: [pathname + search],
+          openKeys: [pathname.substr(0, pathname.lastIndexOf('/'))]
+        })
+    }
   }
 
   componentWillReceiveProps(nextProps) {
     //当点击面包屑导航时，侧边栏要同步响应
-    // const pathname = nextProps.location.pathname
-    // if (this.props.location.pathname !== pathname) {
-    //   this.setState({
-    //     selectedKeys: [pathname],
-    //   })
+    const { pathname, search } = nextProps.location
+    // if (this.props.location.pathname !== pathname || this.props.location.search !== search) {
+      this.setState({
+        selectedKeys: [pathname + search],
+      })
     // }
   }
 
@@ -111,4 +112,4 @@ class MenuMain extends React.Component {
   }
 }
 
-export default MenuMain
+export default withRouter(MenuMain)

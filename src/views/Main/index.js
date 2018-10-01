@@ -39,8 +39,8 @@ const menus = [
     icon: 'team',
     path: '/user',
     subs: [
-      {path: '/user', title: '所有会员', icon: ''},
-      {path: '/visitor', title: '访客记录', icon: ''},
+      {path: '/user/user', title: '所有会员', icon: ''},
+      {path: '/user/visitor', title: '访客记录', icon: ''},
     ]
   },
   {
@@ -68,7 +68,6 @@ const menus = [
     path: '/about'
   }
 ]
-
 
 
 class Main extends Component {
