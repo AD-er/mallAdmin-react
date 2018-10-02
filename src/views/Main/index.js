@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Layout, Menu, Dropdown, Badge, Avatar, Icon, Modal } from 'antd';
+import { Layout, Menu, Dropdown, Breadcrumb, Badge, Avatar, Icon, Modal } from 'antd';
 import { Logo, Header } from './style';
 import { actionCreators } from './store';
 import Menus from './components/Menu';
@@ -79,8 +79,24 @@ class Main extends Component {
     }
   }
 
+  renderSubMenu = (ddd) => {
+    let bc = [];
+    console.log(ddd)
+    for (var i = 0; i < menus.length; i++) {
+      console.log(ddd.indexOf(menus[i].path.substring(1)))
+      if (ddd.indexOf(menus[i].path.substring(1)) > 0) {
+        bc = [...bc, menus[i].title]
+      }
+    }
+    return (
+      bc
+    )
+  }
+
   render() {
-    const { collapsed, admin, onToggle, onLogout, history } = this.props;
+    const { collapsed, admin, onToggle, onLogout, history, location } = this.props;
+    const rank = location.pathname.split('/')
+    const breadcrumb = this.renderSubMenu([...rank]);
     const menu = (
       <Menu style={{ margin: '-4px -15px 0', borderRadius: '0 0 4px 4px' }}>
         <Menu.Item key="0">
@@ -110,6 +126,14 @@ class Main extends Component {
               type={ collapsed ? 'menu-unfold' : 'menu-fold' }
               onClick={ onToggle }
             />
+            <Breadcrumb style={{marginLeft: 8, display: 'inline'}}>
+              <Breadcrumb.Item><Link to='/home'>首页</Link></Breadcrumb.Item>
+              {breadcrumb.map(item=>{
+                if (item !== '首页'){
+                  return <Breadcrumb.Item key={item}>{item}</Breadcrumb.Item>
+                }
+              })}
+            </Breadcrumb>
             <ul className="right-menu">
               <li>
                 <Badge count={0} dot>

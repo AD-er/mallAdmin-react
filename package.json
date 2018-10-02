@@ -27,7 +27,7 @@
   },
   "proxy": {
     "/apia": {
-      "target": "",
+      "target": "https://www.dajing.ren",
       "changeOrigin": true
     }
   }

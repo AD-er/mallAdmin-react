@@ -70,7 +70,7 @@ class MenuMain extends React.Component {
     }
   }
 
-  renderMenuItem = ({path, icon, title,}) => {
+  renderMenuItem = ({path, icon, title}) => {
     return (
       <Menu.Item key={path}>
         <Link to={path}>
