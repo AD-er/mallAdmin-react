@@ -58,8 +58,8 @@ const menus = [
     icon: 'bulb',
     path: '/wechat',
     subs:[
-      {path: '/wechat/public', title: '公众号', icon: '',},
-      {path: '/wechat/mini', title: '小程序', icon: '',},
+      {path: '/wechat/public', title: '公众号', icon: ''},
+      {path: '/wechat/mini', title: '小程序', icon: ''},
     ]
   },
   {
@@ -79,24 +79,29 @@ class Main extends Component {
     }
   }
 
-  renderSubMenu = (ddd) => {
-    let bc = [];
-    console.log(ddd)
-    for (var i = 0; i < menus.length; i++) {
-      console.log(ddd.indexOf(menus[i].path.substring(1)))
-      if (ddd.indexOf(menus[i].path.substring(1)) > 0) {
-        bc = [...bc, menus[i].title]
+  renderSubMenu = (pathname) => {
+    let route = [];
+    for (var i = 2; i <= pathname.length; i++) {
+      route = [...route, pathname.slice(0, i).join('/')]
+    }
+    return this.renderBreadcrumb(menus, route, [])
+  }
+
+  renderBreadcrumb = (menu, route, bc) => {
+    for (var i = 0; i < menu.length; i++) {
+      if (route.indexOf(menu[i].path) > -1) {
+        bc.push(menu[i].title)
+        if (menu[i].subs && bc.length < route.length) {
+          this.renderBreadcrumb(menu[i].subs, route, bc)
+        }
       }
     }
-    return (
-      bc
-    )
+    return bc
   }
 
   render() {
     const { collapsed, admin, onToggle, onLogout, history, location } = this.props;
-    const rank = location.pathname.split('/')
-    const breadcrumb = this.renderSubMenu([...rank]);
+    const breadcrumb = this.renderSubMenu(location.pathname.split('/'));
     const menu = (
       <Menu style={{ margin: '-4px -15px 0', borderRadius: '0 0 4px 4px' }}>
         <Menu.Item key="0">
