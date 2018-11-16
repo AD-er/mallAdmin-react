@@ -25,6 +25,11 @@ const Admin = LoadableComponent(()=>import('../../../views/Admin/Admin'))
 //微信
 const Wechat = LoadableComponent(()=>import('../../../views/Wechat'))
 
+//网站
+const banner = LoadableComponent(()=>import('../../../views/Web/banner/index'))
+const banner_create = LoadableComponent(()=>import('../../../views/Web/banner/create'))
+const coupon = LoadableComponent(()=>import('../../../views/Web/coupon/index'))
+
 //关于
 const About = LoadableComponent(()=>import('../../../views/About'))
 
@@ -48,7 +53,13 @@ class ContentMain extends React.Component {
           <PrivateRoute exact path='/admin/user' component={Admins}/>
           <PrivateRoute exact path='/admin/user/:id' component={Admin}/>
 
-          <PrivateRoute exact path='/wechat' component={Wechat}/>
+          <PrivateRoute exact path='/wechat/public' component={Wechat}/>
+          <PrivateRoute exact path='/wechat/mini' component={Wechat}/>
+
+          <PrivateRoute exact path='/web/banner' component={banner}/>
+          <PrivateRoute exact path='/web/banner/create' component={banner_create}/>
+
+          <PrivateRoute exact path='/web/coupon' component={coupon}/>
 
           <PrivateRoute exact path='/about' component={About}/>
 

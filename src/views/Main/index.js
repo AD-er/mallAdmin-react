@@ -45,7 +45,7 @@ const menus = [
   },
   {
     title: '后台管理',
-    icon: 'desktop',
+    icon: 'global',
     path: '/admin',
     subs: [
       {path: '/admin/user', title: '管理员', icon: ''},
@@ -54,8 +54,17 @@ const menus = [
     ]
   },
   {
+    title: '网站管理',
+    icon: 'desktop',
+    path: '/web',
+    subs: [
+      {path: '/web/banner', title: '轮播图', icon: ''},
+      {path: '/web/coupon', title: '优惠券', icon: ''},
+    ]
+  },
+  {
     title: '微信管理',
-    icon: 'bulb',
+    icon: 'wechat',
     path: '/wechat',
     subs:[
       {path: '/wechat/public', title: '公众号', icon: ''},
