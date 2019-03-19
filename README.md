@@ -47,11 +47,7 @@
 
 ### 截图预览
 以下简单截图，预览后台大体结构布局：
-![后台前端预览](http://ycdn.dajing.ren/mall-admin/preview/2018-10-07%2022.20.09.png)
-![后台前端预览](http://ycdn.dajing.ren/mall-admin/preview/2018-10-07%2022.11.45.png)
-![后台前端预览](http://ycdn.dajing.ren/mall-admin/preview/2018-10-07%2022.12.40.png)
-![后台前端预览](http://ycdn.dajing.ren/mall-admin/preview/2018-10-07%2022.15.55.png)
-![后台前端预览](http://ycdn.dajing.ren/mall-admin/preview/2018-10-07%2022.14.14.png)
+> *更新中
 
 ### 后端API
 API接口由另一个项目[[基于Laravel + Bootstrap商城前后端Demo](https://github.com/AD-er/mallWeb-bootstrap)]提供开发，使用Laravel框架、DingoAPI扩展、RESTFul 设计风格、JWT 身份验证、Transformer数据序列化等 API 开发相关技术。更多详情介绍请查看[GitHub源码](https://github.com/AD-er/mallWeb-bootstrap)
